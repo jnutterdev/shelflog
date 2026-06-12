@@ -21,3 +21,37 @@ class MediaItem(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+
+# Book (extends MediaItem)
+# ├── status (want / reading / finished)
+# ├── date_finished (optional)
+# └── author
+
+# Film (extends MediaItem)
+# └── director
+
+# Album (extends MediaItem)
+# ├── artist
+# └── label
+
+
+class Book(MediaItem):
+    STATUS_CHOICES = [
+        ("want", "Want to Read"),
+        ("reading", "Reading"),
+        ("finished", "Finished"),
+    ]
+
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="want")
+    date_finished = models.DateField(null=True, blank=True)
+    author = models.CharField(max_length=255)
+
+
+class Film(MediaItem):
+    director = models.CharField(max_length=255)
+
+
+class Album(MediaItem):
+    artist = models.CharField(max_length=255)
+    label = models.CharField(max_length=255, null=True, blank=True)
