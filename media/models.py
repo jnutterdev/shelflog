@@ -9,8 +9,7 @@ class MediaItem(models.Model):
         validators=[MinValueValidator(1000), MaxValueValidator(9999)]
     )
     rating = models.IntegerField(
-        blank=True,
-        null=True,
+        blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
     notes = models.TextField(
         blank=True,
