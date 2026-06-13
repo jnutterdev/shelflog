@@ -1,0 +1,9 @@
+{% extends "media/base.html" %}
+
+    {% block content %}
+    <ul>
+        {% for album in albums %}
+            <li>{{ album.title }}, {{ album.artist }}</li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
